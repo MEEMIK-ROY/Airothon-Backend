@@ -1,0 +1,22 @@
+{
+  "name": "airothon-backend",
+  "version": "1.0.0",
+  "description": "Backend for airothon website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MEEMIK-ROY/Airothon-Backend.git"
+  },
+  "author": "Meemik Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MEEMIK-ROY/Airothon-Backend/issues"
+  },
+  "homepage": "https://github.com/MEEMIK-ROY/Airothon-Backend#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
