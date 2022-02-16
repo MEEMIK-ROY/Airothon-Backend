@@ -54,8 +54,14 @@ const signup = (req,res)=>{
                             email:user.email,
                             address:user.address
                         },
-                        auth_token:token,
-                        refresh_token:refreshToken
+                        auth_token:{
+                            token:token,
+                            expiresIn:"1 day"
+                        },
+                        refresh_token:{
+                            token:refreshToken,
+                            expiresIn:"30 days"
+                        }
                     }
                 })
             }
@@ -64,6 +70,54 @@ const signup = (req,res)=>{
 
 }
 
+const signIn = async (req,res)=>{
+    const {
+        email,
+        password
+    }=req.body;
+
+    try{
+        const user = await userModel.findOne({
+            email:email
+        });
+
+        const isAuthenticated = user.authenticate(password)
+        if(isAuthenticated){
+            const token = generateJwtToken(user._id,user.role);
+            const refreshToken = generateRefreshToken(user._id,user.token);
+            return res.status(200).json({
+                success:true,
+                message:"User logged in successfully",
+                data:{
+                    user:{
+                        name:user.name,
+                        email:user.email,
+                        address:user.address
+                    },
+                    auth_token:{
+                        token:token,
+                        expiresIn:"1 day"
+                    },
+                    refresh_token:{
+                        token:refreshToken,
+                        expiresIn:"30 days"
+                    }
+                }
+            })
+        }else{
+            return res.json({
+                success:false,
+                message:"User Login failed. Bad Authentication"
+            });
+        }
+    }
+    catch(error){
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+}
+
 module.exports = {
-    signup
+    signup,
+    signIn
 }
