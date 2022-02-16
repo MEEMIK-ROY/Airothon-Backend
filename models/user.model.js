@@ -32,10 +32,7 @@ const userSchema = mongoose.Schema({
         type: String,
         enum: ["user", "admin", "super-admin"],
         default: "user"
-    },
-    clothesBrought:String,
-    clothesDonated:String,
-    cart:String
+    }
 })
 
 userSchema.virtual('password').set(function(password){
