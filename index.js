@@ -1,16 +1,16 @@
 const express=require('express');
 const cors=require('cors');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
 const db=require('./database/db');
 const router = express.Router();
 
-dotenv.config();
+dotenv.config()
 
 const app=express();
 app.use(cors());
 app.use(express.json());
 
-router.get('/', (req,res)=>{
+app.get('/', (req,res)=>{
     return res.json({
         success:true,
         message:"Welcome to Airothon Backend!!!"
