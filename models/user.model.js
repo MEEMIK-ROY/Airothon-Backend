@@ -28,6 +28,11 @@ const userSchema = mongoose.Schema({
         type:String,
         required:[true,"Please provide your address"]
     },
+    role: {
+        type: String,
+        enum: ["user", "admin", "super-admin"],
+        default: "user"
+    },
     clothesBrought:String,
     clothesDonated:String,
     cart:String
