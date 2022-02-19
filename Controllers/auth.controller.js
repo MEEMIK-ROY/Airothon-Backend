@@ -50,6 +50,7 @@ const signup = (req,res)=>{
                     message:"User has been successfully registered",
                     data:{
                         user:{
+                            id:user._id,
                             name:user.name,
                             email:user.email,
                             address:user.address
@@ -90,6 +91,7 @@ const signIn = async (req,res)=>{
                 message:"User logged in successfully",
                 data:{
                     user:{
+                        id:user._id,
                         name:user.name,
                         email:user.email,
                         address:user.address
