@@ -23,10 +23,12 @@ const clothSchema = mongoose.Schema({
         type:String
     },
     brand:{
+        required:[true,"Please provide cloth brand"],
         type:String
     },
     color:{
-        type:String
+        type:String,
+        required:[true,"Please provide cloth color"],
     },
     category:{
         type:mongoose.Schema.Types.ObjectId,

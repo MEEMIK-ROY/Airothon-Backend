@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const {
-    createCloth
-}=
+const{
+    isLoggedIn,
+    isUser,
+    isAdmin
+}=require('../middleware/auth.middleware');
 
-router.post('/create',createCloth);
+const {
+    addCloth
+}=require('../Controllers/cloth.controller')
+
+router.post('/create',isLoggedIn,addCloth);
 
 module.exports = router;
