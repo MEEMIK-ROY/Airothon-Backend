@@ -1,11 +1,12 @@
 const clothModel = require('../models/clothes.model');
+const slugify = require('slugify');
 const{
     getErrorResponse,
     getResponseV1,
     getResponseV2
 }=require('../helpers/helper');
 
-const addCLoth = (req,res)=>{
+const addNewCLoth = (req,res)=>{
     const{
         type,
         clothImg,
@@ -27,9 +28,10 @@ const addCLoth = (req,res)=>{
         category:category,
         donatedBy:req.user.id,
     });
-
+    console.log(_cloth);
     _cloth.save((error,cloth)=>{
         if(error){
+            console.log(error);
             return getErrorResponse(res,500);
         }
         if(cloth){
@@ -52,6 +54,4 @@ const addCLoth = (req,res)=>{
     })
 }
 
-module.exports = {
-    addCLoth
-}
+module.exports = {addNewCLoth}

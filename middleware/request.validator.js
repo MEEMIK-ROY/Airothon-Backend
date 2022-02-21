@@ -19,9 +19,9 @@ const validateSignInRequest = [
 ]
 
 
-// const validateCreateCategoryRequest = [
-//     check('name').notEmpty().withMessage("Category Name is required")
-// ]
+const validateCreateCategoryRequest = [
+    check('name').notEmpty().withMessage("Category Name is required")
+]
 
 
 // const validateAddToCartRequest = [
@@ -45,5 +45,6 @@ const isRequestCorrect = (req, res, next) => {
 module.exports = {
     validateSignUpRequest,
     validateSignInRequest,
-    isRequestCorrect
+    isRequestCorrect,
+    validateCreateCategoryRequest
 }

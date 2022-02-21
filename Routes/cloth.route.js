@@ -8,9 +8,9 @@ const{
 }=require('../middleware/auth.middleware');
 
 const {
-    addCloth
+    addNewCLoth
 }=require('../Controllers/cloth.controller')
 
-router.post('/create',isLoggedIn,addCloth);
+router.post('/add',isLoggedIn,addNewCLoth);
 
 module.exports = router;
