@@ -12,6 +12,10 @@ const cartSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Cloth",
             required: true,
+        },
+        qty:{
+            type:Number,
+            required:[true,"Please provide cart item quantity"]
         }
     }]
 }, {

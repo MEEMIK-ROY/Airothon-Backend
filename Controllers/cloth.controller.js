@@ -10,6 +10,7 @@ const addNewCLoth = (req,res)=>{
     const{
         type,
         clothImg,
+        qty,
         size,
         description,
         brand,
@@ -21,6 +22,7 @@ const addNewCLoth = (req,res)=>{
         type:type,
         slug:slugify(clothName),
         clothImg:clothImg,
+        qty:qty,
         size:size,
         description:description,
         brand:brand,
@@ -40,6 +42,7 @@ const addNewCLoth = (req,res)=>{
                     id:cloth._id,
                     type:cloth.type,
                     img:cloth.clothImg,
+                    qty:cloth.qty,
                     slug:cloth.slug,
                     size:cloth.size,
                     description:cloth.description,

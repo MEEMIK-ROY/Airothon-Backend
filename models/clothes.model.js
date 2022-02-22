@@ -15,6 +15,10 @@ const clothSchema = mongoose.Schema({
         img:String
         }
     ],
+    qty:{
+        type:Number,
+        required:[true,"Please provide product quantity"]
+    },
     size:{
         type:String,
         required:[true,"Please provide cloth size"]
