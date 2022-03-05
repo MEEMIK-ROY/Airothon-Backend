@@ -57,4 +57,40 @@ const addNewCLoth = (req,res)=>{
     })
 }
 
-module.exports = {addNewCLoth}
+const removeClothById = async (req,res)=>{
+    try {
+        const cloth = await clothModel.findOneAndDelete({
+            "_id":req.body.id
+        });
+        return getResponseV2(res,true,200,cloth);
+    } catch (error) {
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+}
+
+const getAllClothes = async (req, res) => {
+
+    try {
+        const clothes = await clothModel.find({});
+        return getResponseV2(res,true,200,clothes);
+    } catch (error) {
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+}
+
+const getClothById = async(req,res)=>{
+    try {
+        const cloth = await clothModel.findOne({
+            _id: req.body.id
+        });
+        return getResponseV1(res, 200, cloth)
+    } catch (error) {
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+}
+
+
+module.exports = {addNewCLoth,removeClothById,getAllClothes,getClothById};

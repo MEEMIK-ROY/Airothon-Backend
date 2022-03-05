@@ -7,7 +7,7 @@ const clothSchema = mongoose.Schema({
     },
     slug:{
         type:String,
-        required:[true,"Please provide cloth sklug"],
+        required:[true,"Please provide cloth slug"],
         unique:true,
         trim:true
     },

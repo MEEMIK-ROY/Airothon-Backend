@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 const{
-    addToCart
+    addToCart,
+    removeFromCart,
+    getCart
 }=require('../Controllers/cart.controller');
 const {
     isLoggedIn,
@@ -11,5 +13,7 @@ const {
 }=require('../middleware/auth.middleware');
 
 router.post('/add',isLoggedIn,isUser,addToCart);
+router.post('/remove',isLoggedIn,removeFromCart);
+router.get('/get',isLoggedIn,getCart);
 
 module.exports = router;

@@ -8,9 +8,15 @@ const{
 }=require('../middleware/auth.middleware');
 
 const {
-    addNewCLoth
+    addNewCLoth,
+    removeClothById,
+    getAllClothes,
+    getClothById
 }=require('../Controllers/cloth.controller')
 
 router.post('/add',isLoggedIn,addNewCLoth);
+router.post('/deleteById',isLoggedIn,removeClothById)
+router.get('/getAll',isLoggedIn,getAllClothes);
+router.post('/getById',isLoggedIn,getClothById)
 
 module.exports = router;

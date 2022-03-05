@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const {
     addNewCategory,
+    removeCategory,
+    getAllCategories,
+    getCategoryById
 } = require('../Controllers/category.controller')
 
 const {
@@ -18,4 +21,7 @@ const {
 
 
 router.post("/create", isLoggedIn,validateCreateCategoryRequest, isRequestCorrect, addNewCategory)
+router.post("/delete",isLoggedIn,removeCategory);
+router.get('/getAll',isLoggedIn,getAllCategories);
+router.post('/getById',isLoggedIn,getCategoryById)
 module.exports = router;

@@ -1,6 +1,11 @@
 const categoryModel = require('../models/category.model');
 const slugify = require('slugify');
 
+const{
+    getErrorResponse,
+    getResponseV1,
+    getResponseV2
+}=require('../helpers/helper');
 
 const addNewCategory = (req, res) => {
 
@@ -41,6 +46,43 @@ const addNewCategory = (req, res) => {
     })
 }
 
+const removeCategory = async (req,res)=>{
+    try {
+        const category = await categoryModel.findOneAndDelete({
+            "_id":req.body.id
+        });
+        return getResponseV2(res,true,200,category);
+    } catch (error) {
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+}
+
+const getAllCategories = async (req, res) => {
+
+    try {
+        const category = await categoryModel.find({});
+        return getResponseV2(res,true,200,category);
+    } catch (error) {
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+};
+
+const getCategoryById = async(req,res)=>{
+    try {
+        const category = await categoryModel.findOne({
+            _id: req.body.id
+        });
+        return getResponseV1(res, 200, category)
+    } catch (error) {
+        console.log(error);
+        return getErrorResponse(res,500);
+    }
+}
 module.exports = {
-    addNewCategory
+    addNewCategory,
+    removeCategory,
+    getAllCategories,
+    getCategoryById
 }
