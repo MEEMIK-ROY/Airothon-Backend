@@ -4,7 +4,8 @@ const {
     addNewCategory,
     removeCategory,
     getAllCategories,
-    getCategoryById
+    getCategoryById,
+    updateCategory
 } = require('../Controllers/category.controller')
 
 const {
@@ -20,8 +21,10 @@ const {
 } = require('../middleware/request.validator');
 
 
-router.post("/create", isLoggedIn,validateCreateCategoryRequest, isRequestCorrect, addNewCategory)
+router.post("/create", isLoggedIn,validateCreateCategoryRequest, isRequestCorrect, addNewCategory);
 router.post("/delete",isLoggedIn,removeCategory);
 router.get('/getAll',isLoggedIn,getAllCategories);
-router.post('/getById',isLoggedIn,getCategoryById)
+router.post('/getById',isLoggedIn,getCategoryById);
+router.put('/update',isLoggedIn,updateCategory);
+
 module.exports = router;

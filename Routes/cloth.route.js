@@ -11,12 +11,14 @@ const {
     addNewCLoth,
     removeClothById,
     getAllClothes,
-    getClothById
+    getClothById,
+    // updateClothById
 }=require('../Controllers/cloth.controller')
 
 router.post('/add',isLoggedIn,addNewCLoth);
 router.post('/deleteById',isLoggedIn,removeClothById)
 router.get('/getAll',isLoggedIn,getAllClothes);
-router.post('/getById',isLoggedIn,getClothById)
+router.post('/getById',isLoggedIn,getClothById);
+// router.put('/updateById',isLoggedIn,updateClothById);
 
 module.exports = router;

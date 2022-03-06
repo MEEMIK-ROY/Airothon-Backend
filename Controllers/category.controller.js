@@ -6,6 +6,7 @@ const{
     getResponseV1,
     getResponseV2
 }=require('../helpers/helper');
+const cartModel = require('../models/cart.model');
 
 const addNewCategory = (req, res) => {
 
@@ -80,9 +81,34 @@ const getCategoryById = async(req,res)=>{
         return getErrorResponse(res,500);
     }
 }
+
+const updateCategory = async(req,res)=>{
+    const {
+        name,
+        slug
+    }=req.body;
+    const category = await categoryModel.updateOne(
+        {
+        "_id":req.body.id
+    },{
+        $set:{
+            "name":name,
+            "slug":slug
+        }
+    },(err,catres)=>{
+        if(err){
+            console.log(err);
+            return getErrorResponse(res,500,error);
+        }
+        if(catres){
+            return getResponseV2(res,true,200,"Category updated successfully",catres);
+        }
+    })
+}
 module.exports = {
     addNewCategory,
     removeCategory,
     getAllCategories,
-    getCategoryById
+    getCategoryById,
+    updateCategory
 }
