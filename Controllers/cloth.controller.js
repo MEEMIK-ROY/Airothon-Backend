@@ -91,53 +91,10 @@ const getClothById = async(req,res)=>{
     }
 }
 
-// const updateClothById = async(req,res)=>{
-//     const{
-//         type,
-//         clothImg,
-//         qty,
-//         size,
-//         description,
-//         brand,
-//         color,
-//         category    
-//     } = req.body;
-//     try{
-//         const cloth = await clothModel.updateOne(
-//             {
-//                 "_id":req.body.id
-//             },
-//             {
-//                 $set:{
-//                     "type":type,
-//                     "clothImg":clothImg,
-//                     "qty":qty,
-//                     "size":size,
-//                     "description":description,
-//                     "brand":brand,
-//                     "color":color,
-//                     "category":category
-//                 }
-//             },(error,clothres)=>{
-//                 if(error){
-//                     console.log(error);
-//                     return getErrorResponse(res,500,error);
-//                 }
-//                 if(clothres){
-//                     // return getResponseV2(res,true,200,"Cloth updated successfully",clothres);
-//                 }
-//             }
-//         )
-//     }catch(error){
-//         console.log(error);
-//         return getErrorResponse(res,500,error);
-//     }
-// }
 
 module.exports = {
     addNewCLoth,
     removeClothById,
     getAllClothes,
-    getClothById,
-    // updateClothById
+    getClothById
 };
