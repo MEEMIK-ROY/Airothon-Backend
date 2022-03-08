@@ -1,5 +1,6 @@
 # Airothon-Backend
 Backend for Airothon
+App hosted on https://enigmatic-headland-64592.herokuapp.com/
 ---
 ## Requirements
 
